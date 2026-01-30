@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Placement Analysis</title>
+   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      .prediction-text {
+        color: #ffffff;
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 10px;
+        padding: 15px;
+        background: #4caf50;
+        border-radius: 8px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎓 Student Placement Analysis</h1>
+      </header>
+
+      <main>
+        <form action="/predict" method="POST">
+          <div class="form-grid">
+            <div class="input-group">
+              <label>CGPA</label>
+              <input type="number" name="cgpa" step="0.1" required />
+            </div>
+            <div class="input-group">
+              <label>Internships</label
+              ><input type="number" name="internships" required />
+            </div>
+            <div class="input-group">
+              <label>Projects</label
+              ><input type="number" name="projects" required />
+            </div>
+            <div class="input-group">
+              <label>Workshops</label
+              ><input type="number" name="workshops" required />
+            </div>
+            <div class="input-group">
+              <label>SSC Marks</label
+              ><input type="number" name="ssc_marks" required />
+            </div>
+            <div class="input-group">
+              <label>HSC Marks</label
+              ><input type="number" name="hsc_marks" required />
+            </div>
+
+            <div class="input-group">
+              <label>Extra Curricular</label>
+              <select name="extra_curricular">
+                <option value="1">Yes</option>
+                <option value="0">No</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label>Placement Training</label>
+              <select name="placement_training">
+                <option value="1">Completed</option>
+                <option value="0">Not Completed</option>
+              </select>
+            </div>
+          </div>
+          <button type="submit" class="predict-btn">Analyze Probability</button>
+        </form>
+
+        <div id="result-box" style="text-align: center; margin-top: 30px">
+          {% if prediction_text %}
+          <h2>Prediction Result</h2>
+          <div class="prediction-text">{{ prediction_text }}</div>
+          {% endif %}
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

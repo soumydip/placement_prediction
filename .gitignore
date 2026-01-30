@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+
+venv/
+env/
+.venv/
+bin/
+include/
+lib/
+
+.vscode/
+
+# System files
+.DS_Store
+Thumbs.db
+
+ *.csv
